@@ -11,8 +11,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
 
-import static org.assertj.core.api.Assertions.assertThat; //주피터 이름으로 된 assertions 랑 다름
-
 @SpringBootTest
 @RunWith(SpringRunner.class)
 public class MemberRepositoryTest {
@@ -26,7 +24,7 @@ public class MemberRepositoryTest {
     @Rollback(value = false)
     public void testMember() {
         Member member = new Member();
-        member.setUserName("권민지");
+        member.setUserName("권민지") ;
         Long saveId = memberRepository.save(member);
         Member findMember = memberRepository.find(saveId);
         Assertions.assertThat(findMember.getId()).isEqualTo(member.getId());
